@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import shap
 import joblib
 import matplotlib.pyplot as plt
 # from shap_utils import plot_shap_values
