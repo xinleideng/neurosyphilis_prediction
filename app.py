@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import joblib
 import matplotlib.pyplot as plt
-# from shap_utils import plot_shap_values
-# st.set_page_config(page_title="Diagnosis App", layout="wide")  # Optional: wide layout
+from PIL import Image
+import os
 
 st.markdown("""
 <style>
@@ -38,14 +38,14 @@ model_options = {
     "Adaboost": "ada",
     "XGBoost": "xgb"
 }
-
+st.sidebar.image("logo.png", width=200)
 
 selected_guidance = st.sidebar.selectbox("Select Diagnosis Guildances:", list(guidance_options.keys()))
 selected_model = st.sidebar.selectbox("Select Predictive Model:", list(model_options.keys()))
 
 
 # --- Create two tabs ---
-tab1, tab2 = st.tabs(["🧪 Prediction", "📊 ROC/AUC"])
+tab1, tab2, tab3, tab4 = st.tabs(["✅ Prediction", "📈 ROC/AUC","🏥 Net benefit","👁️‍🗨️ Calibration"])
 
 with tab1:
     st.markdown("<h4>Enter Patient Information</h4>", unsafe_allow_html=True)
@@ -85,8 +85,7 @@ with tab1:
         except Exception as e:
             st.error(f"Error loading model or predicting: {e}")
 
-from PIL import Image
-import os
+
 
 with tab2:
     st.markdown("<h4>ROC/AUC</h4>", unsafe_allow_html=True)
@@ -101,5 +100,17 @@ with tab2:
         st.image(Image.open(fig_path), caption=f"ROCAUC - {selected_guidance} ({selected_model})")
     else:
         st.warning(f"No images found for {selected_guidance} using {selected_model}.")
+
+
+with tab3:
+
+    guidance1 = guidance_options[selected_guidance]
+    fig_filename1 = f"figures/{guidance1} net benefit.tif"
+    st.image(fig_filename1, caption="Net benefit", use_column_width=True)
+
+with tab4:
+    guidance1 = guidance_options[selected_guidance]  
+    fig_filename2 = f"figures/{guidance1} calibration.tif"
+    st.image(fig_filename2, caption="Calibration", use_column_width=True)
 
 
