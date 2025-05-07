@@ -98,7 +98,7 @@ with tab2:
     fig_path = os.path.join("figures/", fig_filename)
 
     if os.path.exists(fig_path):
-        st.image(Image.open(fig_path), caption=f"ROCAUC - {selected_guidance} ({selected_model})", use_column_width=True)
+        st.image(Image.open(fig_path), caption=f"ROCAUC - {selected_guidance} ({selected_model})", use_container_width=True)
     else:
         st.warning(f"No images found for {selected_guidance} using {selected_model}.")
 
