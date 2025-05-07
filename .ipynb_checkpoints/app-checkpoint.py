@@ -26,7 +26,7 @@ guidance_options = {
     "US 2018": "US2018_binary",
     "US 2021": "US2021_binary",
     "Up to date": "Uptodate",
-    "Europ": "Euro",
+    "Europe": "Euro",
     "China": "China_binary",
     "Australia":"Aust_binary"
 }
@@ -98,7 +98,7 @@ with tab2:
     fig_path = os.path.join("figures/", fig_filename)
 
     if os.path.exists(fig_path):
-        st.image(Image.open(fig_path), caption=f"ROCAUC - {selected_guidance} ({selected_model})", use_container_width=True)
+        st.image(Image.open(fig_path), caption=f"ROCAUC - {selected_guidance} ({selected_model})")
     else:
         st.warning(f"No images found for {selected_guidance} using {selected_model}.")
 
