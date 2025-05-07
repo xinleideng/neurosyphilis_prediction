@@ -106,11 +106,11 @@ with tab3:
 
     guidance1 = guidance_options[selected_guidance]
     fig_filename1 = f"figures/{guidance1} net benefit.tif"
-    st.image(fig_filename1, caption="Net benefit", use_column_width=True)
+    st.image(fig_filename1, caption="Net benefit")
 
 with tab4:
     guidance1 = guidance_options[selected_guidance]  
     fig_filename2 = f"figures/{guidance1} calibration.tif"
-    st.image(fig_filename2, caption="Calibration", use_column_width=True)
+    st.image(fig_filename2, caption="Calibration")
 
 
